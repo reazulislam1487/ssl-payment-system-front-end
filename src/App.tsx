@@ -1,12 +1,10 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import SSLPaymentPage from "./components/Payment";
 
 function App() {
   return (
     <>
-      <h1>Hello SSL Payment System</h1>
+      <SSLPaymentPage></SSLPaymentPage>
     </>
   );
 }
