@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, FormEvent, ChangeEvent } from "react";
 // Added
 interface PaymentForm {
@@ -12,6 +13,7 @@ const SSLPaymentPage: React.FC = () => {
     email: "",
     amount: "",
   });
+  console.log(formData);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -22,12 +24,11 @@ const SSLPaymentPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/initiate-payment", {
+      const res = await axios.post("http://localhost:5000/initiate-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
       const data = await res.json();
       if (data?.GatewayPageURL) {
         window.location.href = data.GatewayPageURL; // Redirect to SSLCommerz
@@ -82,7 +83,7 @@ const SSLPaymentPage: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition"
+          className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition"
         >
           Pay Now
         </button>
