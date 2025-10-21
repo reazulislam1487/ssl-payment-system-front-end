@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, FormEvent, ChangeEvent } from "react";
 // Added
 interface PaymentForm {
@@ -24,14 +23,14 @@ const SSLPaymentPage: React.FC = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/initiate-payment", {
+      const res = await fetch("http://localhost:5000/initiate-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      if (data?.GatewayPageURL) {
-        window.location.href = data.GatewayPageURL; // Redirect to SSLCommerz
+      if (data?.url) {
+        window.location.href = data.url; // Redirect to SSLCommerz
       } else {
         alert("Payment initialization failed!");
       }
