@@ -30,7 +30,8 @@ const SSLPaymentPage: React.FC = () => {
       });
       const data = await res.json();
       if (data?.url) {
-        window.location.href = data.url; // Redirect to SSLCommerz
+        console.log(data?.url);
+        window.location.href = data.url; 
       } else {
         alert("Payment initialization failed!");
       }

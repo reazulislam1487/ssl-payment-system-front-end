@@ -1,17 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import Success from "../components/Success";
-import SSLPaymentPage from "../components/Payment";
+import Root from "../layout/Root";
+import Home from "../components/Home";
+import faild from "../components/faild";
 
 const router = createBrowserRouter([
   {
     path: "/",
 
-    element: <SSLPaymentPage></SSLPaymentPage>,
-  },
-  {
-    path: "/success",
-
-    element: <Success></Success>,
+    Component: Root,
+    children: [
+      {
+        index: true,
+        Component: Home,
+      },
+      { path: "success", Component: Success },
+      { path: "fail", Component: faild },
+    ],
   },
 ]);
 
