@@ -1,13 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const TestForm = () => {
-    return (
-        <div>
-            <form >
-                <input type="text" name='name'  />
-            </form>
-        </div>
-    );
+  return (
+    <div>
+      <form></form>
+    </div>
+  );
 };
 
 export default TestForm;
